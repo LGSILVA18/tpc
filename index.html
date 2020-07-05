@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="2"> -->
+    <title>Document</title>
+
+     <!-- Bootstrap core CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+     <link rel="stylesheet" href="./css/datepicker.css">
+ 
+    <style>
+        /* label {
+            color: blue;
+        } */s-invalid, 
+        .was-validated 
+        .form-control.i.form-control:invalid {
+                border-color: #dc3545;
+        }
+        
+        #emailum{ background-color: rgb(51, 40, 40);
+                  color: white;
+
+        }
+
+        .container{ background-color:white; height: 600px;
+
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container" >
+
+        <h1 style=" color: red; text-align: center;" >Gmail</h1>
+        
+        <div class="rounded"   id="emailum">
+
+        
+            <div class="d-none" id="novoemail" >
+                <div style="text-align: center; font-size: 40px;">
+                    <span >Novo email</span>
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="email"> Para: </label>
+                    <input name="email" id="email" class="form-control" type="email"/>
+                </div>
+                
+                <div class = "col-md-6">
+                    <label for="email"> Assunto: </label>
+                    <input name="texto" id="texto" class="form-control" type="text"/>
+
+                </div>
+                
+                <div class="col-md-12">
+                    <label for="message">Mensagem:</label>
+                    <textarea name="notes" id="notes" class="form-control"></textarea>
+                </div>
+            </div>
+            
+        <div class="row mt-3">
+        <img src="gmail1.png" alt="" class="d-none" id="vasco" style=" width: 200px;height: 150px; position: absolute;left: 860px;bottom: 390px; ">
+        
+        </div>
+
+        <div class="row mt-3" id="escrever">
+            <div class="col-12 col-md-6 offset-md-5"   onclick="escrever()" >
+            <button  class="btn btn-primary">Escrever um email</button>
+        </div>
+
+    </br>
+
+        <div class="row mt-3" id="submit">
+            <div  class="d-none"   class="col-12 col-md-6 offset-md-5" >
+                
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                
+            </div>
+        </div>
+        
+       
+        
+            
+    </div>
+
+        
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="./js/bootstrap-datepicker.js"></script>
+    <script>
+
+        var escreverEl = document.getElementById('escrever');
+        var novoemailEl = document.getElementById('novoemail');
+        var vascoEl = document.getElementById('vasco');
+        var submitEl = document.getElementById('submit');
+
+        
+        function escrever() {
+           
+            novoemailEl.classList.remove('d-none');
+            vascoEl.classList.remove('d-none');
+            submitEl.classList.remove('d-none');
+
+        }
+
+    </script>
+</body>
+</html>
