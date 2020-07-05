@@ -66,10 +66,11 @@
 
         <div class="row mt-3" id="escrever">
             <div class="col-12 col-md-6 offset-md-5"   onclick="escrever()" >
-            <button  class="btn btn-primary">Escrever um email</button>
+             <button type="button" class="btn btn-primary btn-lg">Escrever um Email</button>
+            </div>
         </div>
 
-    </br>
+    
 
         <div class="row mt-3" id="submit">
             <div  class="d-none"   class="col-12 col-md-6 offset-md-5" >
@@ -99,7 +100,7 @@
 
         
         function escrever() {
-           
+            escreverEl.classList.add('d-none');
             novoemailEl.classList.remove('d-none');
             vascoEl.classList.remove('d-none');
             submitEl.classList.remove('d-none');
