@@ -54,12 +54,12 @@
                 <div class="col-md-6">
                     <label for="email"> Para: </label>
                     <input name="email" id="email" class="form-control" type="email" required/>
-                    <img src="gmail1.png" alt=""  id="vasco" style=" width: 200px;height: 150px; ;left: 860px;bottom: 390px; ">
+                    <img src="gmail1.png" alt="" class=" d-none" id="vasco" style=" width: 200px;height: 150px; ;left: 860px;bottom: 390px; ">
                 </div>
                 
                 <div class = "col-md-6">
                     <label for="text"> Assunto: </label>
-                    <input name="text" id="texto" class="form-control" type="text" required/>
+                    <input name="text" id="text" class="form-control" type="text" required/>
 
                 </div>
                 
@@ -111,7 +111,7 @@ function validateForm(event) {
     $(".form-control").removeClass('is-invalid is-valid');
     
     formIsValid = 
-        validateRequired($('#texto')) &&
+        validateRequired($('#text')) &&
         validateRequired($('#email'));
 
     
