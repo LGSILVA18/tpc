@@ -27,6 +27,15 @@
         .container{ background-color:white; height: 600px;
 
         }
+        
+        
+
+       #emailum{ padding-bottom: 30px;
+
+
+       }
+
+    
     </style>
 </head>
 <body class="bg-light">
@@ -36,20 +45,21 @@
         
         <div class="rounded"   id="emailum">
 
-        
-            <div class="d-none" id="novoemail" >
+            <form novalidate class="" method="POST" data-netlify="true" action>
+            <div id="novoemail" >
                 <div style="text-align: center; font-size: 40px;">
                     <span >Novo email</span>
                 </div>
                 
                 <div class="col-md-6">
                     <label for="email"> Para: </label>
-                    <input name="email" id="email" class="form-control" type="email"/>
+                    <input name="email" id="email" class="form-control" type="email" required/>
+                    <img src="gmail1.png" alt=""  id="vasco" style=" width: 200px;height: 150px; ;left: 860px;bottom: 390px; ">
                 </div>
                 
                 <div class = "col-md-6">
-                    <label for="email"> Assunto: </label>
-                    <input name="texto" id="texto" class="form-control" type="text"/>
+                    <label for="text"> Assunto: </label>
+                    <input name="text" id="texto" class="form-control" type="text" required/>
 
                 </div>
                 
@@ -59,27 +69,25 @@
                 </div>
             </div>
             
-        <div class="row mt-3">
-        <img src="gmail1.png" alt="" class="d-none" id="vasco" style=" width: 200px;height: 150px; position: absolute;left: 860px;bottom: 390px; ">
         
-        </div>
 
-        <div class="row mt-3" id="escrever">
-            <div class="col-12 col-md-6 offset-md-5"   onclick="escrever()" >
-             <button type="button" class="btn btn-primary btn-lg">Escrever um Email</button>
-            </div>
-        </div>
+       
 
     
 
         <div class="row mt-3" id="submit">
-            <div  class="d-none"   class="col-12 col-md-6 offset-md-5" >
+            <div class="col-12 col-md-6 offset-md-5 mt-3" >
                 
                 <button type="submit" class="btn btn-primary">Enviar</button>
                 
             </div>
         </div>
         
+        <div class="col-10">
+            <div id="success-message" class="d-none alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Sucesso!</strong> O novo contacto foi guardado.
+              </div>
+        </div>
        
         
             
@@ -92,20 +100,65 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="./js/bootstrap-datepicker.js"></script>
     <script>
+         $("form").submit(validateForm);
 
-        var escreverEl = document.getElementById('escrever');
-        var novoemailEl = document.getElementById('novoemail');
-        var vascoEl = document.getElementById('vasco');
-        var submitEl = document.getElementById('submit');
+function validateForm(event) {
+    event.preventDefault();
+    event.stopPropagation();
 
+    var formIsValid = true;
+
+    $(".form-control").removeClass('is-invalid is-valid');
+    
+    formIsValid = 
+        validateRequired($('#texto')) &&
+        validateRequired($('#email'));
+
+    
+    if(formIsValid) {
+        // enviar dados
+        // tratar resposta
+        var $form = $(this);
+        $.post(
+            $form.attr("action"), 
+            $form.serialize()
+        )
+        .then(submitSuccess)
+        .catch(function(erro) {
+            console.log(erro);
+            alert("falhou!");
+        });
+    }
+    else {
+        // mostrar mensagem de erro
+    }
+
+    function submitSuccess() {
+        $(".form-control").removeClass('is-invalid is-valid');
+        $(".form-control").val("")
         
-        function escrever() {
-            escreverEl.classList.add('d-none');
-            novoemailEl.classList.remove('d-none');
-            vascoEl.classList.remove('d-none');
-            submitEl.classList.remove('d-none');
 
-        }
+        $('#success-message').removeClass('d-none');
+        setTimeout(function() {
+            $('#success-message').addClass('d-none');
+        }, 3000);
+    }   
+
+}
+
+function validateRequired(el) {
+    var value = el.val();
+    if( value.length === 0 ) {
+        el.addClass('is-invalid');
+        return false;
+    }
+    else {
+        el.addClass('is-valid');
+        return true;
+    }
+}
+
+       
 
     </script>
 </body>
